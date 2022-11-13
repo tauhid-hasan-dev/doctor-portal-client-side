@@ -1,9 +1,10 @@
 import React from 'react';
-import treatment from '../../../assets/images/treatment.png'
+import treatment from '../../../assets/images/treatment.png';
 import PrimaryButton from '../../../Components/PrimaryButton/PrimaryButton';
 
 const DentalCare = () => {
     return (
+
         <div className="hero p-0">
             <div className="hero-content flex-col lg:flex-row justify-between py-20 lg:py-36">
                 <div className='w-full lg:w-[50%]'>
@@ -17,6 +18,7 @@ const DentalCare = () => {
                 </div>
             </div>
         </div>
+
     );
 };
 
