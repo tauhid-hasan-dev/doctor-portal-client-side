@@ -14,8 +14,11 @@ const AppointmentOption = ({ option, setTreatment }) => {
                 <p className='text-gray-500 font-normal'>{slots.length} {slots.length > 1 ? 'spaces' : 'space'} available</p>
             </div>
             <div className="card-body">
-
-                <label className='btn btn-primary bg-gradient-to-r from-primary  to-secondary text-white' htmlFor="booking-modal" onClick={(() => setTreatment(option))}>Book Appointment</label>
+                <label
+                    disabled={slots.length === 0}
+                    className='btn btn-primary bg-gradient-to-r from-primary  to-secondary text-white' htmlFor="booking-modal"
+                    onClick={(() => setTreatment(option))}
+                >Book Appointment</label>
 
             </div>
         </div>
