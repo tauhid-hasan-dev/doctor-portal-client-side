@@ -9,7 +9,7 @@ const ContactUs = () => {
                 background: `url(${(appointment)})`
             }}
         >
-            <div className="hero p-16">
+            <div className="hero p-16 ">
                 <div className="hero-content flex flex-col ">
                     <div className='flex flex-col justify-center items-center gap-2'>
                         <p className='text-sm lg:text-lg text-primary font-bold'>Contact Us</p>
