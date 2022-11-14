@@ -3,10 +3,9 @@ import bg from '../../../assets/images/bg.png'
 import chair from '../../../assets/images/chair.png'
 import PrimaryButton from '../../../Components/PrimaryButton/PrimaryButton';
 import { DayPicker } from 'react-day-picker';
+import { format } from 'date-fns';
 
-const AppointmentBanner = () => {
-    const [selectedDate, setSelectedDate] = useState(new Date());
-
+const AppointmentBanner = ({ selectedDate, setSelectedDate }) => {
 
     return (
         <section
@@ -17,15 +16,18 @@ const AppointmentBanner = () => {
             <div className="hero py-8  lg:py-20  ">
                 <div className="hero-content flex-col lg:flex-row-reverse gap-36"  >
                     <img src={chair} className="w-full lg:w-1/2 rounded-lg shadow-2xl" alt='' />
-                    <div>
+                    <div className='flex flex-col items-start'>
                         <DayPicker
                             mode="single"
+                            //Single- we will pick only one date
+                            //Not Single - we will select a range of date(like for hotel booking)
                             selected={selectedDate}
                             onSelect={setSelectedDate}
                         />
                     </div>
                 </div>
             </div>
+
         </section>
     );
 };
