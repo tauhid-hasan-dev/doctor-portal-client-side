@@ -1,7 +1,8 @@
 import React from 'react';
 import PrimaryButton from '../../../Components/PrimaryButton/PrimaryButton';
+import BookingModal from '../BookingModal/BookingModal';
 
-const AppointmentOption = ({ option }) => {
+const AppointmentOption = ({ option, setTreatment }) => {
     const { name, slots } = option;
     return (
         <div className={`card  shadow-xl flex flex-col py-5 text-white  px-5 font-bold items-center text-center `}>
@@ -14,7 +15,8 @@ const AppointmentOption = ({ option }) => {
             </div>
             <div className="card-body">
 
-                <PrimaryButton>Book Appointment</PrimaryButton>
+                <label className='btn btn-primary bg-gradient-to-r from-primary  to-secondary text-white' htmlFor="booking-modal" onClick={(() => setTreatment(option))}>Book Appointment</label>
+
             </div>
         </div>
     );
