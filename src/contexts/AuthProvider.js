@@ -11,11 +11,16 @@ const AuthProvider = ({ children }) => {
         return createUserWithEmailAndPassword(auth, email, password)
     }
 
+    const signIn = (email, password) => {
+        return signInWithEmailAndPassword(auth, email, password)
+    }
+
     const user = { name: 'tauhid' }
 
     const value = {
         createUser,
         user,
+        signIn,
     }
     return (
         <AuthContext.Provider value={value}>
