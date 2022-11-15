@@ -6,6 +6,7 @@ import { AuthContext } from '../../contexts/AuthProvider';
 const Login = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const { signIn } = useContext(AuthContext);
+    const [loginError, setLoginError] = useState('')
     const handleLogin = data => {
         console.log(data)
         signIn(data.email, data.password)
@@ -14,7 +15,11 @@ const Login = () => {
                 console.log(user)
 
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                console.log(err.message);
+                setLoginError(err.message)
+
+            })
     }
 
     return (
@@ -50,6 +55,7 @@ const Login = () => {
                             type="password" />
 
                         {errors.password && <p className='mt-2 text-red-600' role="alert">{errors.password?.message}</p>}
+                        {loginError && <p className='text-red-500'>{loginError}</p>}
 
                         <label className="label">
                             <small className="label-text">Forget Password?</small>

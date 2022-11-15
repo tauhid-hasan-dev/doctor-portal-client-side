@@ -4,14 +4,14 @@ import { AuthContext } from '../../../contexts/AuthProvider';
 
 const Navbar = () => {
     const { user } = useContext(AuthContext);
-    console.log(user.name);
+    console.log(user?.name);
     const navMenu = <React.Fragment>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/about'>About</Link></li>
         <li><Link to='/appointment'>Appointment</Link></li>
         <li><Link to='/reviews'>Reviews</Link></li>
         <li><Link to='/contact'>Contact Us</Link></li>
-        <li><Link to='/login'>Login</Link></li>
+        {user.uid ? <li><Link >SignOut</Link></li> : <li><Link to='/login'>Login</Link></li>}
     </React.Fragment>
     return (
         <div className="navbar bg-base-100 border-b px-20">
