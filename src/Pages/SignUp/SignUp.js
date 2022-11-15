@@ -1,21 +1,35 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
+import toast from 'react-hot-toast';
 
 const SignUp = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const { createUser } = useContext(AuthContext);
+    const { createUser, updateUser } = useContext(AuthContext);
+    const [signupError, setSignupError] = useState('')
 
 
     const handleSignUp = data => {
         console.log(data);
+        console.log(data.name)
+        setSignupError('');
         createUser(data.email, data.password)
             .then(result => {
                 const user = result.user;
                 console.log(user)
+                toast.success('User created successfully!')
+                const userInfo = {
+                    displayName: data.name
+                }
+                updateUser(userInfo)
+                    .then(() => { })
+                    .catch(err => console.log(err))
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                console.log(err.message);
+                setSignupError(err.message);
+            })
     }
     return (
         <div className='flex flex-col justify-center items-center py-20'>
@@ -36,6 +50,7 @@ const SignUp = () => {
                             placeholder="Name"
                             type="text" />
                         {errors.name && <p className='text-red-500 mt-1'>{errors.name.message}</p>}
+
 
                     </div>
                     <div className="form-control w-full ">
@@ -65,6 +80,7 @@ const SignUp = () => {
                             placeholder="Password"
                             type="password" />
                         {errors.password && <p className='text-red-500 mt-1'>{errors.password.message}</p>}
+                        {signupError && <p className='text-red-500'>{signupError}</p>}
                     </div>
                     <input className='btn  w-full btn-accent' value='Sign Up' type="submit" />
                 </form>
