@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../contexts/AuthProvider';
 
 const Navbar = () => {
+    const { user } = useContext(AuthContext);
+    console.log(user.name);
     const navMenu = <React.Fragment>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/about'>About</Link></li>
