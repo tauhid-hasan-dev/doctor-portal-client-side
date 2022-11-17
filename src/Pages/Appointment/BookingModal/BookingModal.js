@@ -1,6 +1,7 @@
 import { data } from 'autoprefixer';
 import { format } from 'date-fns/esm';
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { AuthContext } from '../../../contexts/AuthProvider';
 
 const BookingModal = ({ treatment, selectedDate, setTreatment }) => {
@@ -37,7 +38,10 @@ const BookingModal = ({ treatment, selectedDate, setTreatment }) => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                setTreatment(null);
+                if (data.acknowledged) {
+                    setTreatment(null);
+                    toast.success('Booking confirmed')
+                }
             })
 
     }

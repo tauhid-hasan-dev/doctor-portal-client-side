@@ -6,11 +6,12 @@ import BookingModal from '../BookingModal/BookingModal';
 
 const AvailableAppointment = ({ selectedDate }) => {
     const [treatment, setTreatment] = useState(null);
+    const date = format(selectedDate, 'PP')
 
     const { data: appointmentOptions = [] } = useQuery({
-        queryKey: ['appointmentOptions'],
+        queryKey: ['appointmentOptions', date],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/appoinmentoptions')
+            const res = await fetch(`http://localhost:5000/appoinmentoptions?date=${date}`)
             const data = await res.json();
             return data;
         }
