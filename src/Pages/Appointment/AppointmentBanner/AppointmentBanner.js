@@ -1,9 +1,7 @@
-import React, { useState } from 'react';
 import bg from '../../../assets/images/bg.png'
 import chair from '../../../assets/images/chair.png'
-import PrimaryButton from '../../../Components/PrimaryButton/PrimaryButton';
 import { DayPicker } from 'react-day-picker';
-import { format } from 'date-fns';
+
 
 const AppointmentBanner = ({ selectedDate, setSelectedDate }) => {
 
